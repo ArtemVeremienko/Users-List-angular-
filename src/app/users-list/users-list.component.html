@@ -1,15 +1,16 @@
 <div class="line">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" >
     <mat-label>Сортировка пользователей</mat-label>
-    <mat-select>
-      <mat-option value=0>От А до Я</mat-option>
-      <mat-option value=1>От Я до А</mat-option>
+    <mat-select #list (selectionChange)="sort(list.value)">
+      <mat-option value="0">От А до Я</mat-option>
+      <mat-option value="1">От Я до А</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Поиск</mat-label>
-    <input matInput placeholder="Найти пользовтеля">
+    <input matInput placeholder="Найти пользовтеля" #input (keyup.enter)="search(input.value)">
+    <mat-icon matSuffix (click)="search(input.value)">search</mat-icon>
   </mat-form-field>
 </div>
 
@@ -19,7 +20,7 @@
     [ngClass]="{'gray': i%2}"
   >
     <div>
-      <span class="item">{{i}} - {{ user.username }}</span>
+      <span class="item">{{ user.username }}</span>
       <span class="item">{{ user.name }}</span>
       <span *ngIf="user.role==='Admin'" class="item">{{ user.role }}</span>
     </div>

@@ -16,4 +16,12 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
     this.usersList = this.usersService.getUsersList();
   }
+
+  search(query: string) {
+    this.usersList = this.usersService.findUser(query);
+  }
+
+  sort(direction: string) {
+    this.usersList = this.usersService.sortUsers(direction);
+  }
 }
