@@ -6,3 +6,10 @@
   display: inline-block;
   width: 180px;
 }
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
