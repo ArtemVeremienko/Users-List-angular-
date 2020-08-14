@@ -7,9 +7,13 @@ import { User } from '../shared/user';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
+
 export class UsersListComponent implements OnInit {
 
   usersList: User[] = [];
+  username: string;
+  name: string;
+  role: string;
 
   constructor(public usersService: UsersService) { }
 
@@ -23,5 +27,19 @@ export class UsersListComponent implements OnInit {
 
   sort(direction: string) {
     this.usersList = this.usersService.sortUsers(direction);
+  }
+
+  addUser() {
+    this.usersService.addUser({
+      id: Math.floor((Math.random() * 6) + 10),
+      name: this.name,
+      username: this.username,
+      email: "",
+      role: this.role,
+      phone: "",
+      website: ""
+    });
+
+    this.usersList = this.usersService.getUsersList();
   }
 }
