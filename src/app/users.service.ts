@@ -26,10 +26,10 @@ export class UsersService {
   }
 
   deleteUsers(users: User[]) {
-    users.forEach(user => {
-      this.usersList = this.usersList.filter(item =>  item.id !== user.id);
-    });
-
+    this.usersList = this.usersList.filter(item => !users.includes(item));
+    // 2nd option compare id
+    // const usersId = users.map(user => user.id);
+    // this.usersList = this.usersList.filter(item => !usersId.includes(item.id));
   }
 
   usersList: User[] = [
