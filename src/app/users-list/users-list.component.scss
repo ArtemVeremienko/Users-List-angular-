@@ -13,7 +13,15 @@
   align-items: flex-start;
   margin-top: 20px;
 
+  &.footer {
+    align-items: center;
+  }
+
   .item {
     max-width: 140px;
+  }
+
+  .btn {
+    height: 50px;
   }
 }

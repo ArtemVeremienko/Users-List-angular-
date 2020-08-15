@@ -34,12 +34,15 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button class="item" color="primary" (click)="addUser()">Добавить</button>
+  <button mat-raised-button class="item btn" color="primary" (click)="addUser()">Добавить</button>
 
 </div>
 
-<mat-selection-list #users>
+
+<div *ngIf="usersList.lenth > 0; else #empty">
+  <mat-selection-list #users (selectionChange)="selectItem(users.selectedOptions.selected)">
   <mat-list-option
+    [value]="user"
     *ngFor="let user of usersList; let i = index"
     [ngClass]="{'gray': i%2}"
   >
@@ -51,6 +54,18 @@
   </mat-list-option>
 </mat-selection-list>
 
-<p>
-  Options selected: {{users.selectedOptions.selected.length}}
-</p>
+
+<div class="line footer">
+  <p>
+    Выбрано пользователей: {{users.selectedOptions.selected.length}}
+  </p>
+  <button mat-raised-button class="item btn" color="warn" (click)="deleteUsers()">Удалить</button>
+</div>
+</div>
+
+<ng-template #empty>
+  <p>Пользователей не найдено</p>
+</ng-template>
+
+
+
