@@ -39,28 +39,28 @@
 </div>
 
 
-<div *ngIf="usersList.lenth > 0; else #empty">
+<div *ngIf="usersList.length > 0; else empty">
   <mat-selection-list #users (selectionChange)="selectItem(users.selectedOptions.selected)">
-  <mat-list-option
-    [value]="user"
-    *ngFor="let user of usersList; let i = index"
-    [ngClass]="{'gray': i%2}"
-  >
-    <div>
-      <span class="item">{{ user.username }}</span>
-      <span class="item">{{ user.name }}</span>
-      <span *ngIf="user.role==='Admin'" class="item">{{ user.role }}</span>
-    </div>
-  </mat-list-option>
-</mat-selection-list>
+    <mat-list-option
+      [value]="user"
+      *ngFor="let user of usersList; let i = index"
+      [ngClass]="{'gray': i%2}"
+    >
+      <div>
+        <span class="item">{{ user.username }}</span>
+        <span class="item">{{ user.name }}</span>
+        <span *ngIf="user.role==='Admin'" class="item">{{ user.role }}</span>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
 
 
-<div class="line footer">
-  <p>
-    Выбрано пользователей: {{users.selectedOptions.selected.length}}
-  </p>
-  <button mat-raised-button class="item btn" color="warn" (click)="deleteUsers()">Удалить</button>
-</div>
+  <div class="line footer">
+    <p>
+      Выбрано пользователей: {{users.selectedOptions.selected.length}}
+    </p>
+    <button mat-raised-button class="item btn" color="warn" (click)="deleteUsers()">Удалить</button>
+  </div>
 </div>
 
 <ng-template #empty>

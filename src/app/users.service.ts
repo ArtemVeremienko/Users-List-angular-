@@ -27,8 +27,9 @@ export class UsersService {
 
   deleteUsers(users: User[]) {
     users.forEach(user => {
-      this.usersList.filter(item => item.id !== user.id)
-    })
+      this.usersList = this.usersList.filter(item =>  item.id !== user.id);
+    });
+
   }
 
   usersList: User[] = [
